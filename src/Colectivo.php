@@ -11,4 +11,12 @@ class Colectivo{
     public function getLinea(){
         return $this->linea;
     }
+
+    
+    public function cobrarBoleto($tarjeta,$boleto){
+        if ($tarjeta->saldo > $boleto->tarifa){
+            $tarjeta->saldo -= $boleto->tarifa;
+        }
+        else echo "No hay saldo suficiente";
+    }
 }
