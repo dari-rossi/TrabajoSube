@@ -1,8 +1,8 @@
 <?php
 namespace TrabajoSube;
 class Boleto{
-    
-    public function __construct($tarifa=0){
+
+    public function __construct($tarifa){
         $this->tarifa = $tarifa;
     }
 }
