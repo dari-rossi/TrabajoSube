@@ -7,11 +7,14 @@ class Tarjeta{
 
     public function cargar_tarjeta($nueva_carga){
         if(in_array($nueva_carga , $cargas_aceptadas) && ($saldo + $nueva_carga) <= limite_saldo){
-            printf("Su saldo se a cargado correctamente\nSu nuevo saldo es de %i",$this->saldo);
-            return $this->saldo += nueva_carga;
+            echo "Su saldo se ha cargado correctamente ";
+            echo "Su nuevo saldo es de " . $this->saldo;
+            $this->saldo += $nueva_carga;
         }
         else{
-            printf("Error al cargar el monto ingresado\nVerifique que el monto ingresado este dentro de los montos aceptados\nSu saldo es de %i",$this->saldo);
+            echo "Error al cargar el monto ingresado";
+            echo "Verifique que el monto ingresado este dentro de los montos aceptados";
+            echo "Su saldo es de " . $this->saldo;
         }
     }
 
