@@ -2,7 +2,7 @@
 namespace TrabajoSube;
 
 class Colectivo{
-    public $costo_boleto;
+    public $costo_boleto = 120;
     
     public function pagarCon($tarjeta){
         if($tarjeta->saldo >= $costo_boleto){
