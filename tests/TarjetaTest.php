@@ -13,8 +13,8 @@ class TarjetaTest extends TestCase{
       $this->assertEquals($tarjeta->saldo, 300);
     }
 
-    public function test__construct(96){
-        $tarjeta = new Tarjeta();
+    public function test__construct(){
+        $tarjeta = new Tarjeta(96);
         $this->assertEquals($tarjeta->saldo, 96);
     }
 }
