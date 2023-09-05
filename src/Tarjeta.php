@@ -6,7 +6,7 @@ class Tarjeta{
     private $limite_saldo = 6600;
 
     public function cargar_tarjeta($nueva_carga){
-        if(in_array($nueva_carga , $cargas_aceptadas) && ($saldo + $nueva_carga) <= limite_saldo){
+        if(in_array($nueva_carga , $this->cargas_aceptadas) && ($this->saldo + $nueva_carga) <= $this->limite_saldo){
             echo "Su saldo se ha cargado correctamente ";
             echo "Su nuevo saldo es de " . $this->saldo;
             $this->saldo += $nueva_carga;
