@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 class BoletoTest extends TestCase{
 
     public function test__construct(){
-        $tarifa = new Tarifa(250);
-        $this->assertEquals($this->tarifa, 250);
+        $boleto = new Boleto(250);
+        $this->assertEquals($boleto->tarifa, 250);
     }
 }
