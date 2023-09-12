@@ -70,3 +70,19 @@ IMPORTANTE: Como punto de control, alguna de estas dos funcionalidades: "Viaje p
 - Escribir un test que valide que una tarjeta de FranquiciaCompleta siempre puede pagar un boleto.
 - Escribir un test que valide que el monto del boleto pagado con medio boleto es siempre la mitad del normal.
 
+
+
+
+
+## Anotaciones (cosas a hacer)
+- Saldo negativo de $211,84
+- Al cargar la tarjeta y el monto supere a 6600, quedará pendiente a acreditar (almacenado) el saldo restante
+- Al cargar la tarjeta se descuenta lo utilizado si estaba con saldo negativo
+- En el boleto marcar Fecha, tipo de tarjeta, línea de colectivo, total abonado, saldo e ID de la tarjeta. Aclarar que si se le cargó saldo a la tarjeta que tenía saldo negativo, el proximo boleto te muestra el descuento realizado por tener saldo negativo (ejemplo: -$100 adeudados)
+- Hacer los tipos de tarjetas cómo herencias de la original (franquicias parciales, como el medio boleto estudiantil o el universitario, y las completas como las de jubilados(Notar que también existe boleto gratuito para estudiantes).)
+- MEDIO BOLETO (si se pagó recien, tiene un coldown de 5 mins(para que no lo usen más de una persona))
+- BEG *gratuito* (no se pueden más de 2 por día)
+
+
+
+ESCRIBIR TEST DE TODO!!!
