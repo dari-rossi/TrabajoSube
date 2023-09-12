@@ -3,7 +3,7 @@ namespace TrabajoSube;
 
 class Colectivo{
     public $costo_boleto = 120;
-    public $minimo_tarjeta = -211,84;
+    public $minimo_tarjeta = -211.84;
     
     public function pagarCon($tarjeta){
         //Agregados viajes plus
