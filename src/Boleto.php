@@ -7,3 +7,4 @@ class Boleto{
         $this->tarifa = $tarifa;
     }
 }
+
