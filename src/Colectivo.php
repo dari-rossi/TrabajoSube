@@ -3,9 +3,11 @@ namespace TrabajoSube;
 
 class Colectivo{
     public $costo_boleto = 120;
+    //public $minimo_tarjeta = -211,84;
     
     public function pagarCon($tarjeta){
         if($tarjeta->saldo >= $this->costo_boleto){
+            //if($tarjeta->saldo - $this->costo-boleto >= $minimo_tarjeta){}
             $tarjeta->saldo -= $this->costo_boleto;
             echo "Su boleto ha sido pagado exitosamente";
             echo "Su saldo es de " . $tarjeta->saldo;
