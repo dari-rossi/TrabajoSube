@@ -13,5 +13,7 @@ class ColectivoTest extends TestCase{
         $this->assertEquals($tarjeta->saldo, 0);
         $cole->pagarCon($tarjeta);
         $this->assertEquals($tarjeta->saldo, -120);
+        $cole->pagarCon($tarjeta);
+        $this->assertEquals($tarjeta->saldo, false); 
     }
 }
