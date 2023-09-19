@@ -10,7 +10,7 @@ class Colectivo{
             $tarjeta->saldo -= $this->costo_boleto;
             echo "Su boleto ha sido pagado exitosamente";
             echo "Su saldo es de " . $tarjeta->saldo;
-            acreditar_saldo($tarjeta->saldo);
+            $tarjeta->acreditar_saldo($tarjeta->saldo);
             return new Boleto($costo_boleto);
         }
             
