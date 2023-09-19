@@ -6,7 +6,6 @@ class Colectivo{
     public $minimo_tarjeta = -211.84;
     
     public function pagarCon($tarjeta){
-        //Agregados viajes plus
         if($tarjeta->saldo - $this->costo_boleto >=  $this->minimo_tarjeta){
             $tarjeta->saldo -= $this->costo_boleto;
             echo "Su boleto ha sido pagado exitosamente";
