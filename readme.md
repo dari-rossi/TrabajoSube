@@ -99,7 +99,7 @@ Al utilizar una tarjeta de tipo boleto educativo gratuito se pueden realizar has
 -------------------------------------------------------------------------------------
 
 ## Anotaciones (cosas a hacer)
-- Al cargar la tarjeta se descuenta lo utilizado si estaba con saldo negativo(acreditar saldo acumulado)
+- Hacer test del saldo negativo
 - En el boleto marcar Fecha, tipo de tarjeta, línea de colectivo, total abonado, saldo e ID de la tarjeta. Aclarar que si se le cargó saldo a la tarjeta que tenía saldo negativo, el proximo boleto te muestra el descuento realizado por tener saldo negativo (ejemplo: -$100 adeudados)
 - Hacer los tipos de tarjetas cómo herencias de la original (franquicias parciales, como el medio boleto estudiantil o el universitario, y las completas como las de jubilados(Notar que también existe boleto gratuito para estudiantes).)
 - MEDIO BOLETO (si se pagó recien, tiene un coldown de 5 mins(para que no lo usen más de una persona))
