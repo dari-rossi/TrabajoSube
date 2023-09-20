@@ -36,8 +36,8 @@ class Tarjeta{
             $this->saldo = $this->limite_saldo;
         }
         else{
-            $this->saldo_acumulado = 0;
             $this->saldo += $this->saldo_acumulado;
+            $this->saldo_acumulado = 0;
        }
     }
 
