@@ -30,7 +30,7 @@ class Tarjeta{
 
     public function acreditar_saldo($saldo){
         if($this->saldo + $this->saldo_acumulado > $this->limite_saldo){
-            $this->saldo_acumulado -= $this->limite_saldo - $this->saldo; 
+            $this->saldo_acumulado -= ($this->limite_saldo - $this->saldo); 
             $this->saldo = $this->limite_saldo;
         }
         else{
