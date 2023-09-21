@@ -18,7 +18,7 @@ class TarjetaTest extends TestCase{
     
         $tarjeta = new Tarjeta(6600);
         $colectivo = new Colectivo();
-        $tarjeta->cargar_tarjeta(240);
+        $tarjeta->cargar_tarjeta(200);
 
         $colectivo->pagarCon($tarjeta);
         $tarjeta->acreditar_saldo($this->saldo);
