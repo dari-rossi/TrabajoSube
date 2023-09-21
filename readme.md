@@ -94,9 +94,6 @@ Al utilizar una tarjeta de tipo boleto educativo gratuito se pueden realizar has
 - Escribir un test que valide que si a una tarjeta se le carga un monto que supere el máximo permitido, se acredite el saldo hasta alcanzar el máximo(6600) y que el excedente quede almacenado y pendiente de acreditación.
 - Escribir un test que valide que luego de realizar un viaje, verifique si hay saldo pendiente de acreditación y recargue la tarjeta hasta llegar al máximo nuevamente.
 
-<<<<<<< HEAD
-
-
 -------------------------------------------------------------------------------------
 
 ## Anotaciones (cosas a hacer)
@@ -106,8 +103,4 @@ Al utilizar una tarjeta de tipo boleto educativo gratuito se pueden realizar has
 - MEDIO BOLETO (si se pagó recien, tiene un coldown de 5 mins(para que no lo usen más de una persona))
 - BEG *gratuito* (no se pueden más de 2 por día)
 
-
-
 ESCRIBIR TEST DE TODO!!!
-=======
->>>>>>> e01844c4a1895311bb02b57338a80a98bf77493c
