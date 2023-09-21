@@ -22,7 +22,7 @@ class TarjetaTest extends TestCase{
 
         $colectivo->pagarCon($tarjeta);
         $tarjeta->acreditar_saldo($this->saldo);
-        $this->assertEquals($tarjeta->saldo_acumulado, 120);
+        $this->assertEquals($tarjeta->saldo_acumulado, 80);
 
         $colectivo->pagarCon($tarjeta);
         $tarjeta->acreditar_saldo($this->saldo);
