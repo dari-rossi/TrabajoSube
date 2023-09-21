@@ -17,10 +17,13 @@ class TarjetaTest extends TestCase{
     public function testAcreditar_saldo(){
     
         $tarjeta = new Tarjeta(6600);
+        $colectivo = new Colectivo();
         $tarjeta->cargar_tarjeta(240);
+
         $colectivo->pagarCon($tarjeta);
         $tarjeta->acreditar_saldo($this->saldo);
         $this->assertEquals($tarjeta->saldo_acumulado, 120);
+
         $colectivo->pagarCon($tarjeta);
         $tarjeta->acreditar_saldo($this->saldo);
         $this->assertEquals($tarjeta->saldo_acumulado, 0);
