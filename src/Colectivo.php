@@ -11,7 +11,7 @@ class Colectivo{
             echo "Su boleto ha sido pagado exitosamente";
             echo "Su saldo es de " . $tarjeta->saldo;
             $tarjeta->acreditar_saldo($tarjeta->saldo);
-            return new Boleto($costo_boleto);
+            return new Boleto($costo_boleto , $tarjeta->saldo);
         }
             
         else{
@@ -21,5 +21,4 @@ class Colectivo{
             return false;
         }
     }
-
 }
