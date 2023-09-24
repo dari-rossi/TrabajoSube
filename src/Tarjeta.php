@@ -43,3 +43,21 @@ class Tarjeta{
         $this->saldo = $saldo;
     }
 }
+
+class Medio_Boleto extends Tarjeta{
+    public $tipo_tarjeta;
+
+    public function __construct($saldo=0,$tipo_tarjeta){
+        parent::__construct($saldo);
+        $this->tipo_tarjeta = $tipo_tarjeta;
+    }
+}
+
+class Boleto_Completo extends Tarjeta{
+    public $tipo_tarjeta;
+
+    public function __construct($saldo=0,$tipo_tarjeta){
+        parent::__construct($saldo);
+        $this->tipo_tarjeta = $tipo_tarjeta;
+    }
+}
