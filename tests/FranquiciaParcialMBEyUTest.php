@@ -4,7 +4,7 @@ namespace TrabajoSube;
 
 use PHPUnit\Framework\TestCase;
 
-class FranquiciaParcialMBETest extends TestCase{
+class FranquiciaParcialMBEyTest extends TestCase{
 
     hacer :)
 }
