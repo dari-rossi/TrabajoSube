@@ -129,7 +129,7 @@ Las líneas de colectivo interurbanas admiten todas las franquicias y siguen los
 - Hacer test del saldo negativo
 - En el boleto marcar Fecha, tipo de tarjeta, línea de colectivo, total abonado, saldo e ID de la tarjeta. Aclarar que si se le cargó saldo a la tarjeta que tenía saldo negativo, el proximo boleto te muestra el descuento realizado por tener saldo negativo (ejemplo: -$100 adeudados)
 - Hacer los tipos de tarjetas cómo herencias de la original (franquicias parciales, como el medio boleto estudiantil o el universitario, y las completas como las de jubilados(Notar que también existe boleto gratuito para estudiantes).)
-- MEDIO BOLETO (si se pagó recien, tiene un coldown de 5 mins(para que no lo usen más de una persona))
+- MEDIO BOLETO (si se pagó recien, tiene un coldown de 5 mins(para que no lo usen más de una persona)) + 4 por día
 - BEG *gratuito* (no se pueden más de 2 por día)
 - Rewards por viajar (1-29 y 81... normal, 30-79 20%, 79-80 25%) del 1 al 30 de cada mes SOLO EN TARJETAS NORMAL
 - Franquicias usarse de 6 a 22hs (fuera de esos horarios normal)
