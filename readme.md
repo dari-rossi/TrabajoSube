@@ -93,22 +93,13 @@ Al utilizar una tarjeta de tipo boleto educativo gratuito se pueden realizar has
 - Modificar la función para cargar la tarjeta añadiendo esta funcionalidad.
 - Escribir un test que valide que si a una tarjeta se le carga un monto que supere el máximo permitido, se acredite el saldo hasta alcanzar el máximo(6600) y que el excedente quede almacenado y pendiente de acreditación.
 - Escribir un test que valide que luego de realizar un viaje, verifique si hay saldo pendiente de acreditación y recargue la tarjeta hasta llegar al máximo nuevamente.
-
-<<<<<<< HEAD
-
-=======
->>>>>>> ff096e768065e1e59885b29935b2a1bf3bd68dab
 ## Iteracion 4.
 ## Boleto de uso frecuente
 Las tarjetas SUBE cuentan con el boleto de uso frecuente. Este es un beneficio que aplica un descuento al monto del boleto dependiendo de cuántos viajes se hagan.
 - Del viaje 1 al 29: Tarifa normal.
 - Del viaje 30 al 79: 20% de descuento.
-<<<<<<< HEAD
-- Del viaje 79 al 80: 25% de descuento.
-- Del viaje 81 en adelante: Tarifa normal.
-=======
 - Del viaje 80 en adelante: 25% de descuento.
->>>>>>> ff096e768065e1e59885b29935b2a1bf3bd68dab
+
 
 La cantidad de viajes se cuenta del 1 al 30 de cada mes. Este beneficio se aplicará *sólo* sobre las tarjetas normales.
 Implementar esta nueva funcionalidad.
@@ -145,7 +136,8 @@ Las líneas de colectivo interurbanas admiten todas las franquicias y siguen los
 
 
 ESCRIBIR TEST DE TODO!!!
-=======
+
+
 ## Entrega (17/10).
 En la fecha pactada comenzará la defensa y devolución del trabajo realizado. Para la entrega se pide y se va a considerar:
 
@@ -153,7 +145,3 @@ En la fecha pactada comenzará la defensa y devolución del trabajo realizado. P
 - Un mínimo de 80% de cobertura de código.
 - El correcto funcionamiento del código.
 - Uso de git.
-
-
-
->>>>>>> ff096e768065e1e59885b29935b2a1bf3bd68dab
