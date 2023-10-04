@@ -1,10 +1,8 @@
 <?php
 namespace TrabajoSube;
 
-class Colectivo{
+class Colectivo_Rosario{
     public $costo_boleto = 120;
-    public $costo_medio_boleto = 60;
-    public $costo_boleto_completo = 0;
     public $minimo_tarjeta = -211.84;
     
     public function pagarCon($tarjeta){
@@ -59,7 +57,4 @@ class Colectivo{
             }
         }
     }
-
-
-
 }

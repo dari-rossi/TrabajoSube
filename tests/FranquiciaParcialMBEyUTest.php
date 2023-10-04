@@ -6,5 +6,4 @@ use PHPUnit\Framework\TestCase;
 
 class FranquiciaParcialMBEyTest extends TestCase{
 
-    hacer :)
 }
