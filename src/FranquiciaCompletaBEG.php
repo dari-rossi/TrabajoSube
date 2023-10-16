@@ -2,6 +2,6 @@
 namespace TrabajoSube;
 
 class FranquiciaCompletaBEG extends Tarjeta{
-  public $tarifa_descuento = 0;
+  public $usos_por_dia;
   public $tipo = "FranquiciaCompletaBEG";
   }

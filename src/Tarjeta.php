@@ -5,6 +5,7 @@ class Tarjeta{
     private $limite_saldo = 6600;
     public $saldo_acumulado = 0;
     public $saldo;
+    public $usos_por_mes;
     
     public function cargar_tarjeta($nueva_carga){
         if(in_array($nueva_carga , $this->cargas_aceptadas)){

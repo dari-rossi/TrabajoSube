@@ -2,6 +2,6 @@
 namespace TrabajoSube;
 
 class FranquiciaParcialMBEyU extends Tarjeta{
-  public $tarifa_descuento = $tarifa /2;
+  public $usos_por_dia;
   public $tipo = "FranquiciaParcialMBEyU";
   }
