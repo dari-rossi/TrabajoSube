@@ -5,8 +5,8 @@ class Colectivo_Rosario{
     public $costo_boleto = 120;
     public $minimo_tarjeta = -211.84;
 
-	public function pagarCon($tarjeta){
-		$tipo_tarjeta = comprobar_tarjeta($tarjeta);
+	public function pagarCon($tarjeta , $tiempoFalso){
+		$tipo_tarjeta = comprobar_tarjeta($tarjeta , $tiempoFalso);
 		
 		if(tipo_tarjeta == 1){//Normal
             $boleto = pagar_comun($tarjeta);
@@ -29,33 +29,40 @@ class Colectivo_Rosario{
         }
 	}
 
-	private function comprobar_tarjeta($tarjeta){
+	private function comprobar_tarjeta($tarjeta , $tiempoFalso){
 		$tipo_tarjeta;
-		if($tarjeta == Tarjeta){
-            $this->tipo_tarjeta = 1; 
-		}
-		if($tarjeta == FranquiciaCompletaJubilados){
-            $this->tipo_tarjeta = 2; 
-		}
-		if($tarjeta == FranquiciaCompletaBEG){
-                if(usos_dia <= 2){
-                $this->tipo_tarjeta = 3; 
+
+        if($tiempoFalso->horario_franquicias){
+            if($tarjeta == Tarjeta){
+                $this->tipo_tarjeta = 1; 
+            }
+            if($tarjeta == FranquiciaCompletaJubilados){
+                $this->tipo_tarjeta = 2; 
+            }
+            if($tarjeta == FranquiciaCompletaBEG){
+                    if(usos_dia <= 2){
+                    $this->tipo_tarjeta = 3; 
+                    }
+                     else{
+                        $this->tipo_tarjeta = 1;
+                    }
+                }
+            if($tarjeta == FranquiciaParcialMBEyU){
+                if(usos_dia <= 4){
+                $this->tipo_tarjeta = 4; 
                 }
                  else{
                     $this->tipo_tarjeta = 1;
                 }
-		    }
-		if($tarjeta == FranquiciaParcialMBEyU){
-            if(usos_dia <= 4){
-			$this->tipo_tarjeta = 4; 
-			}
-		 	else{
-                $this->tipo_tarjeta = 1;
-			}
-		}
-		else{
-            echo "Tipo de tarjeta no compatible";
-		}
+            }
+            else{
+                echo "Tipo de tarjeta no compatible";
+            }
+        }
+        else{
+            $this->tipo_tarjeta = 1;
+        }
+
 	 return $tipo_tarjeta;
 	}
 
@@ -97,9 +104,6 @@ class Colectivo_Rosario{
             echo "El costo del boleto es de " . ($this->costo_boleto/2);
         }
 	}
-
-
-
 
 
 
