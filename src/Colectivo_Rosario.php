@@ -9,16 +9,17 @@ class Colectivo_Rosario{
 		$tipo_tarjeta = comprobar_tarjeta($tarjeta);
 		
 		if(tipo_tarjeta == 1){//Normal
-			return new Boleto() = pagar_comun($tarjeta);
+            $boleto = pagar_comun($tarjeta);
+			return boleto;
 		}
 		if(tipo_tarjeta == 2){//Jubilados
-            return new Boleto() = pagar_jubilado($tarjeta);
+            
 		}
 		if(tipo_tarjeta == 3){//BEG
-            return new Boleto() = pagar_beg($tarjeta);
+            
 		}
 		if(tipo_tarjeta == 4){//Parcial
-            return new Boleto() = pagar_parcial($tarjeta);
+            
 		}
         else{
             return false;

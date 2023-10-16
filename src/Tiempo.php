@@ -7,13 +7,13 @@ interface TiempoInterface {
 
 class Tiempo implements TiempoInterface {
     public function time(){
-        return time():
+        return time();
     }
 }
 
 // Esto te permite poner cuando inicia el tiempo
 class TiempoFalso implements TiempoInterface {
-    protected $tiempo:
+    protected $tiempo;
 
     public function __constructor($iniciarEn = 0){
         $this->tiempo = $iniciarEn;
