@@ -10,6 +10,7 @@ class Colectivo_Rosario{
 		
 		if(tipo_tarjeta == 1){//Normal
             $boleto = pagar_comun($tarjeta);
+            $tarjeta->usos_por_mes += 1;
 			return boleto;
 		}
 		if(tipo_tarjeta == 2){//Jubilados
@@ -18,10 +19,12 @@ class Colectivo_Rosario{
 		}
 		if(tipo_tarjeta == 3){//BEG
             $boleto = pagar_beg($tarjeta);
+            $tarjeta->usos_por_dia += 1;
 			return boleto;
 		}
 		if(tipo_tarjeta == 4){//Parcial
             $boleto = pagar_parcial($tarjeta);
+            $tarjeta->usos_por_dia += 1;
 			return boleto;
 		}
         else{
@@ -33,13 +36,13 @@ class Colectivo_Rosario{
 		$tipo_tarjeta;
 
         if($tiempoFalso->horario_franquicias){
-            if($tarjeta == Tarjeta){
+            if($tarjeta instanceof Tarjeta){
                 $this->tipo_tarjeta = 1; 
             }
-            if($tarjeta == FranquiciaCompletaJubilados){
+            if($tarjeta instanceof FranquiciaCompletaJubilados){
                 $this->tipo_tarjeta = 2; 
             }
-            if($tarjeta == FranquiciaCompletaBEG){
+            if($tarjeta instanceof FranquiciaCompletaBEG){
                     if(usos_dia <= 2){
                     $this->tipo_tarjeta = 3; 
                     }
@@ -47,7 +50,7 @@ class Colectivo_Rosario{
                         $this->tipo_tarjeta = 1;
                     }
                 }
-            if($tarjeta == FranquiciaParcialMBEyU){
+            if($tarjeta instanceof FranquiciaParcialMBEyU){
                 if(usos_dia <= 4){
                 $this->tipo_tarjeta = 4; 
                 }
@@ -80,21 +83,16 @@ class Colectivo_Rosario{
 	}
 
     private function pagar_jubilado($tarjeta){
-        //Comprobar tiempo
         return new Boleto($costo_boleto,$tarjeta->saldo);
-        //else no se encuentra en el horario adecuado
-        
 	}
     
     private function pagar_beg($tarjeta){
-        //Comprobar tiempo
-
+        return new Boleto($costo_boleto,$tarjeta->saldo);
 	}
 
     private function pagar_parcial($tarjeta){
-        // Comprobar tiempo?
         if($tarjeta->saldo - ($this->costo_boleto/2) >= $this->minimo_tarjeta){
-            $tarjeta->saldo -= $this->costo_boleto;
+            $tarjeta->saldo -= ($this->costo_boleto/2);
             $tarjeta->acreditar_saldo($tarjeta->saldo);
             return new Boleto($costo_boleto,$tarjeta->saldo);
         }

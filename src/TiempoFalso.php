@@ -26,5 +26,4 @@ class TiempoFalso implements TiempoInterface {
             return false;
         }
     }
-
 }
