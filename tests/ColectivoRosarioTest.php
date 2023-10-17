@@ -7,13 +7,51 @@ use PHPUnit\Framework\TestCase;
 class ColectivoRosarioTest extends TestCase{
 
     public function testPagarCon(){
-        $cole = new Colectivo();
+        
+    }
+
+    public function testComprobar_tarjeta(){
+        $colectivo = new ColectivoRosario();
+
         $tarjeta = new Tarjeta(120);
-        $cole->pagarCon($tarjeta);
-        $this->assertEquals($tarjeta->saldo, 0);
-        $cole->pagarCon($tarjeta);
-        $this->assertEquals($tarjeta->saldo, -120);
-        $cole->pagarCon($tarjeta);
-        $this->assertFalse($cole->pagarCon($tarjeta)); 
+        $colectivo->comprobar_tarjeta($tarjeta,1535563577);
+        $this->assertEquals($colectivo->comprobar_tarjeta, 1);
+
+        $tarjeta = new FranquiciaCompletaJubilados(120);
+        $colectivo->comprobar_tarjeta($tarjeta,);
+        $this->assertEquals($colectivo->comprobar_tarjeta, 2);
+
+        $tarjeta = new FranquiciaCompletaBEG(120);
+        $tarjeta->usos_por_dia = 1;
+        $colectivo->comprobar_tarjeta($tarjeta,1535563577);
+        $this->assertEquals($colectivo->comprobar_tarjeta, 3);
+        $tarjeta->usos_por_dia = 3;
+        $colectivo->comprobar_tarjeta($tarjeta,1535563577);
+        $this->assertEquals($colectivo->comprobar_tarjeta, 1);
+
+        $tarjeta = new FranquiciaParcialMBEyU(120);
+        $tarjeta->usos_por_dia = 1;
+        $colectivo->comprobar_tarjeta($tarjeta,1535563577);
+        $this->assertEquals($colectivo->comprobar_tarjeta, 4);
+        $tarjeta->usos_por_dia = 5;
+        $colectivo->comprobar_tarjeta($tarjeta,1535563577);
+        $this->assertEquals($colectivo->comprobar_tarjeta, 1);
+        
+        $tarjeta = new FranquiciaCompletaJubilados(120);
+        $colectivo->comprobar_tarjeta($tarjeta,0);
+        $this->assertEquals($colectivo->comprobar_tarjeta, 1);
+
+    }
+    public function testPagar_comun(){
+        
+    }
+    public function testPagar_jubilado(){
+        
+    }
+    public function testPagar_beg(){
+        
+    }
+    public function testPagar_parcial(){
+        
     }
 }

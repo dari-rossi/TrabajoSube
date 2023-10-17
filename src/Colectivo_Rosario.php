@@ -5,8 +5,8 @@ class Colectivo_Rosario{
     public $costo_boleto = 120;
     public $minimo_tarjeta = -211.84;
 
-	public function pagarCon($tarjeta , $tiempoFalso){
-		$tipo_tarjeta = comprobar_tarjeta($tarjeta , $tiempoFalso);
+	public function pagarCon($tarjeta , $tiempo){
+		$tipo_tarjeta = comprobar_tarjeta($tarjeta , $tiempo);
 		
 		if(tipo_tarjeta == 1){//Normal
             $boleto = pagar_comun($tarjeta);
@@ -32,10 +32,10 @@ class Colectivo_Rosario{
         }
 	}
 
-	private function comprobar_tarjeta($tarjeta , $tiempoFalso){
+	private function comprobar_tarjeta($tarjeta , $tiempo){
 		$tipo_tarjeta;
 
-        if($tiempoFalso->horario_franquicias){
+        if(horario_franquicias($tiempo)){
             if($tarjeta instanceof Tarjeta){
                 $this->tipo_tarjeta = 1; 
             }
@@ -103,7 +103,16 @@ class Colectivo_Rosario{
         }
 	}
 
-
+    private function horario_franquicias($tiempo){
+        $diaSemana = date('N', $this->tiempo);
+        $hora = date('H', $this->tiempo);
+        if ($diaSemana >= 1 && $diaSemana <= 5 && $hora >= 6 && $hora < 22) {
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 
 /*
     public function pagarCon($tarjeta){
