@@ -77,7 +77,7 @@ class Colectivo_Rosario{
             $tarjeta->acreditar_saldo($tarjeta->saldo);
             $tarjeta->usos_por_mes += 1;
             $tarjeta->tiempo_ultimo_boleto = $tiempo;
-            return new Boleto($tiempo,$tarjeta->tipo,$linea,$costo_boleto,$tarjeta->saldo,$tarjeta->id);
+            return new Boleto($tiempo,$tarjeta->tipo,$this->linea,$this->costo_boleto,$tarjeta->saldo,$tarjeta->id);
         }
 
         if($tarjeta->usos_por_mes >= 30 && $tarjeta->usos_por_mes <= 79 && $tarjeta->saldo - ($this->costo_boleto * 0.80) >= $this->minimo_tarjeta){
@@ -85,7 +85,7 @@ class Colectivo_Rosario{
             $tarjeta->acreditar_saldo($tarjeta->saldo);
             $tarjeta->usos_por_mes += 1;
             $tarjeta->tiempo_ultimo_boleto = $tiempo;
-            return new Boleto($tiempo,$tarjeta->tipo,$linea,$costo_boleto,$tarjeta->saldo,$tarjeta->id);
+            return new Boleto($tiempo,$tarjeta->tipo,$this->linea,$this->costo_boleto,$tarjeta->saldo,$tarjeta->id);
         }
         
         if($tarjeta->usos_por_mes >= 80 && $tarjeta->saldo - ($this->costo_boleto * 0.75) >= $this->minimo_tarjeta){
@@ -93,7 +93,7 @@ class Colectivo_Rosario{
             $tarjeta->acreditar_saldo($tarjeta->saldo);
             $tarjeta->usos_por_mes += 1;
             $tarjeta->tiempo_ultimo_boleto = $tiempo;
-            return new Boleto($tiempo,$tarjeta->tipo,$linea,$costo_boleto,$tarjeta->saldo,$tarjeta->id);
+            return new Boleto($tiempo,$tarjeta->tipo,$this->linea,$this->costo_boleto,$tarjeta->saldo,$tarjeta->id);
         }
 
         echo "No tiene suficiente saldo para comprar un boleto";
@@ -103,13 +103,13 @@ class Colectivo_Rosario{
 	}
 
     public function pagar_jubilado($tarjeta,$tiempo){
-        return new Boleto($tiempo,$tarjeta->tipo,$linea,$costo_boleto,$tarjeta->saldo,$tarjeta->id);
+        return new Boleto($tiempo,$tarjeta->tipo,$this->linea,$this->costo_boleto,$tarjeta->saldo,$tarjeta->id);
 	}
     
     public function pagar_beg($tarjeta,$tiempo){
         $tarjeta->usos_por_dia += 1;
         $tarjeta->tiempo_ultimo_boleto = $tiempo;
-        return new Boleto($tiempo,$tarjeta->tipo,$linea,$costo_boleto,$tarjeta->saldo,$tarjeta->id);
+        return new Boleto($tiempo,$tarjeta->tipo,$this->linea,$this->costo_boleto,$tarjeta->saldo,$tarjeta->id);
 	}
 
     public function pagar_parcial($tarjeta,$tiempo){
@@ -119,7 +119,7 @@ class Colectivo_Rosario{
                 $tarjeta->acreditar_saldo($tarjeta->saldo);
                 $tarjeta->usos_por_dia += 1;
                 $tarjeta->tiempo_ultimo_boleto = $tiempo;
-                return new Boleto($tiempo,$tarjeta->tipo,$linea,$costo_boleto,$tarjeta->saldo,$tarjeta->id);
+                return new Boleto($tiempo,$tarjeta->tipo,$this->linea,$this->costo_boleto,$tarjeta->saldo,$tarjeta->id);
             }
             else{
                 echo "No tiene suficiente saldo para comprar un boleto";
