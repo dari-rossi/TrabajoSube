@@ -43,7 +43,7 @@ class Colectivo_Rosario{
                 $this->tipo_tarjeta = 2; 
             }
             if($tarjeta instanceof FranquiciaCompletaBEG){
-                    if($tarjeta->usos_por_dia <= 2){
+                    if($tarjeta->usos_por_dia < 2){
                     $this->tipo_tarjeta = 3; 
                     }
                      else{
@@ -51,7 +51,7 @@ class Colectivo_Rosario{
                     }
                 }
             if($tarjeta instanceof FranquiciaParcialMBEyU){
-                if($tarjeta->usos_por_dia <= 4){
+                if($tarjeta->usos_por_dia < 4){
                 $this->tipo_tarjeta = 4; 
                 }
                  else{
