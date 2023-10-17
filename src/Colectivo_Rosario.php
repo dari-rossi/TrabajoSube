@@ -35,7 +35,7 @@ class Colectivo_Rosario{
 	public function comprobar_tarjeta($tarjeta , $tiempo){
 		$tipo_tarjeta;
 
-        if(horario_franquicias($tiempo)){
+        if($this->horario_franquicias($tiempo)){
             if($tarjeta instanceof Tarjeta){
                 $this->tipo_tarjeta = 1; 
             }
