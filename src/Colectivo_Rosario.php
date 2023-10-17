@@ -63,7 +63,7 @@ class Colectivo_Rosario{
             }
         }
         else{
-            $this->tipo_tarjeta = 2;
+            $this->tipo_tarjeta = 1;
         }
 
 	 return $tipo_tarjeta;
@@ -104,8 +104,8 @@ class Colectivo_Rosario{
 	}
 
     public function horario_franquicias($tiempo){
-        $diaSemana = date('N', $this->tiempo);
-        $hora = date('H', $this->tiempo);
+        $diaSemana = date('N', $tiempo);
+        $hora = date('H', $tiempo);
         if ($diaSemana >= 1 && $diaSemana <= 5 && $hora >= 6 && $hora < 22) {
             return true;
         }
