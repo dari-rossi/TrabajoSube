@@ -31,6 +31,18 @@ class TarjetaTest extends TestCase{
         $this->assertEquals($tarjeta->saldo_acumulado, 0);
     
     }
+
+    public function testActualizar_mes(){
+        $tarjeta = new FranquiciaCompletaBEG(120);
+        $colectivo = new Colectivo_Rosario();
+        $mes_actual_test = date("F Y");
+        
+        $colectivo->pagarCon($tarjeta, $tiempo);
+        $this->assertEqual(usos_por_mes, 1);
+
+        $colectivo->pagarCon($tarjeta, 0);
+        $this->assertEqual(usos_por_mes, 0);
+    }
     
     public function test__construct(){
         $tarjeta = new Tarjeta(96);

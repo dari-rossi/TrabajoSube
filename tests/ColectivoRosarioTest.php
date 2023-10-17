@@ -88,6 +88,7 @@ class ColectivoRosarioTest extends TestCase{
         $this->assertEquals($colectivo->tipo_tarjeta, 1);
 
     }
+
     public function testPagar_comun(){
         $colectivo = new Colectivo_Rosario();
         
@@ -99,6 +100,7 @@ class ColectivoRosarioTest extends TestCase{
         $this->assertFalse($colectivo->pagar_comun($tarjeta,0));
 
     }
+    
     public function testPagar_jubilado(){
         $colectivo = new Colectivo_Rosario();
         
