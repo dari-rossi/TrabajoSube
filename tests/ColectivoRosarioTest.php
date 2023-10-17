@@ -40,20 +40,21 @@ class ColectivoRosarioTest extends TestCase{
 
         $tarjeta = new FranquiciaCompletaBEG(120);
         $tarjeta->usos_por_dia = 1;
-        $colectivo->pagarCon($tarjeta,1535563577);
+        $colectivo->pagarCon($tarjeta,0);
         $this->assertEquals($tarjeta->usos_por_dia, 2);
         $this->assertEquals($tarjeta->saldo, 120);
         $colectivo->pagarCon($tarjeta,1535563577);
+        $this->assertEquals($tarjeta->usos_por_dia, 1);
         $this->assertEquals($tarjeta->saldo, 0);
 
         $tarjeta = new FranquiciaParcialMBEyU(120);
         $tarjeta->usos_por_dia = 1;
-        $colectivo->pagarCon($tarjeta,1535563577);
+        $colectivo->pagarCon($tarjeta,0);
         $this->assertEquals($tarjeta->usos_por_dia, 2);
         $this->assertEquals($tarjeta->saldo, 60);
-        $this->assertFalse($colectivo->pagarCon($tarjeta,1535563577));
+        $this->assertFalse($colectivo->pagarCon($tarjeta,0));
         $colectivo->pagarCon($tarjeta,1535563890);
-        $this->assertEquals($tarjeta->usos_por_dia, 3);
+        $this->assertEquals($tarjeta->usos_por_dia, 1);
         $this->assertEquals($tarjeta->saldo, 0);
 
     }
