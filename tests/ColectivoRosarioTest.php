@@ -115,4 +115,11 @@ class ColectivoRosarioTest extends TestCase{
         $colectivo->pagar_parcial($tarjeta,0);
         $this->assertFalse($colectivo->pagar_parcial($tarjeta,0));
     }
+
+    public function testHorario_franquicias(){
+        $colectivo = new Colectivo_Rosario();
+
+        $this->assertTrue($colectivo->horario_franquicias(1535563577));
+        $this->assertFalse($colectivo->horario_franquicias(0));
+    }
 }
