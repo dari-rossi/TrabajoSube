@@ -9,21 +9,21 @@ class Colectivo_Rosario{
 		$tipo_tarjeta = $this->comprobar_tarjeta($tarjeta , $tiempo);
 		
 		if($this->tipo_tarjeta == 1){//Normal
-            $boleto = pagar_comun($tarjeta);
+            $boleto = $this->pagar_comun($tarjeta);
             $tarjeta->usos_por_mes += 1;
 			return boleto;
 		}
 		if($this->tipo_tarjeta == 2){//Jubilados
-            $boleto = pagar_jubilado($tarjeta);
+            $boleto = $this->pagar_jubilado($tarjeta);
 			return boleto;
 		}
 		if($this->tipo_tarjeta == 3){//BEG
-            $boleto = pagar_beg($tarjeta);
+            $boleto = $this->pagar_beg($tarjeta);
             $tarjeta->usos_por_dia += 1;
 			return boleto;
 		}
 		if($this->tipo_tarjeta == 4){//Parcial
-            $boleto = pagar_parcial($tarjeta);
+            $boleto = $this->pagar_parcial($tarjeta);
             $tarjeta->usos_por_dia += 1;
 			return boleto;
 		}
