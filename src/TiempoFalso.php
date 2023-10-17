@@ -2,7 +2,7 @@
 namespace TrabajoSube;
 
 class TiempoFalso implements TiempoInterface {
-    protected $tiempo;
+    public $tiempo;
 
     public function __constructor($iniciarEn = 0){
         $this->tiempo = $iniciarEn;
