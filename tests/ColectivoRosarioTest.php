@@ -77,42 +77,42 @@ class ColectivoRosarioTest extends TestCase{
         $colectivo = new Colectivo_Rosario();
         
         $tarjeta = new Tarjeta(120);
-        $colectivo->pagar_comun($tarjeta);
+        $colectivo->pagar_comun($tarjeta,0);
         $this->assertEquals($tarjeta->saldo,0);
-        $colectivo->pagar_comun($tarjeta);
+        $colectivo->pagar_comun($tarjeta,0);
         $this->assertEquals($tarjeta->saldo,-120);
-        $this->assertFalse($colectivo->pagar_comun($tarjeta));
+        $this->assertFalse($colectivo->pagar_comun($tarjeta,0));
 
     }
     public function testPagar_jubilado(){
         $colectivo = new Colectivo_Rosario();
         
         $tarjeta = new Tarjeta(120);
-        $colectivo->pagar_jubilado($tarjeta);
+        $colectivo->pagar_jubilado($tarjeta,0);
         $this->assertEquals($tarjeta->saldo,120);
-        $colectivo->pagar_jubilado($tarjeta);
+        $colectivo->pagar_jubilado($tarjeta,0);
         $this->assertEquals($tarjeta->saldo,120);
     }
     public function testPagar_beg(){
         $colectivo = new Colectivo_Rosario();
         
         $tarjeta = new Tarjeta(120);
-        $colectivo->pagar_beg($tarjeta);
+        $colectivo->pagar_beg($tarjeta,0);
         $this->assertEquals($tarjeta->saldo,120);
-        $colectivo->pagar_beg($tarjeta);
+        $colectivo->pagar_beg($tarjeta,0);
         $this->assertEquals($tarjeta->saldo,120);
     }
     public function testPagar_parcial(){
         $colectivo = new Colectivo_Rosario();
         
         $tarjeta = new Tarjeta(120);
-        $colectivo->pagar_parcial($tarjeta);
+        $colectivo->pagar_parcial($tarjeta,0);
         $this->assertEquals($tarjeta->saldo,60);
-        $colectivo->pagar_parcial($tarjeta);
+        $colectivo->pagar_parcial($tarjeta,0);
         $this->assertEquals($tarjeta->saldo,0);
-        $colectivo->pagar_parcial($tarjeta);
-        $colectivo->pagar_parcial($tarjeta);
-        $colectivo->pagar_parcial($tarjeta);
-        $this->assertFalse($colectivo->pagar_parcial($tarjeta));
+        $colectivo->pagar_parcial($tarjeta,0);
+        $colectivo->pagar_parcial($tarjeta,0);
+        $colectivo->pagar_parcial($tarjeta,0);
+        $this->assertFalse($colectivo->pagar_parcial($tarjeta,0));
     }
 }

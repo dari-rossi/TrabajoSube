@@ -11,7 +11,7 @@ class BoletoTest extends TestCase{
         $boleto = new Boleto(111 , "Tarjeta" , "Rosario", 120 , 320 , 1);
         
         $this->assertEquals($boleto->fecha, 111);
-        $this->assertEquals($boleto->tipo, "Tarjeta");
+        $this->assertEquals($boleto->tipo_de_tarjeta, "Tarjeta");
         $this->assertEquals($boleto->linea, "Rosario");
         $this->assertEquals($boleto->tarifa, 120);
         $this->assertEquals($boleto->saldo, 320);
