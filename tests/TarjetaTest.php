@@ -37,7 +37,7 @@ class TarjetaTest extends TestCase{
         $colectivo = new Colectivo_Rosario();
         $mes_actual_test = date("F Y");
         
-        $colectivo->pagarCon($tarjeta, $tiempo);
+        $colectivo->pagarCon($tarjeta, 1535563577);
         $this->assertEquals($tarjeta->usos_por_mes, 1);
 
         $colectivo->pagarCon($tarjeta, 0);

@@ -18,7 +18,7 @@ class FranquiciaCompletaBEGTest extends TestCase{
         $colectivo = new Colectivo_Rosario();
         $dia_actual_test = date("j F Y");
         
-        $colectivo->pagarCon($tarjeta, $tiempo);
+        $colectivo->pagarCon($tarjeta, 1535563577);
         $this->assertEquals($tarjeta->usos_por_dia, 1);
 
         $colectivo->pagarCon($tarjeta, 0);
