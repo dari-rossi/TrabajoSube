@@ -17,7 +17,7 @@ class TarjetaTest extends TestCase{
     public function testAcreditar_saldo(){
     
         $tarjeta = new Tarjeta(6600);
-        $colectivo = new Colectivo();
+        $colectivo = new Colectivo_Rosario();
         $tarjeta->cargar_tarjeta(200);
 
         $colectivo->pagarCon($tarjeta);

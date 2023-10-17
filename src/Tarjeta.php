@@ -4,9 +4,10 @@ class Tarjeta{
     public $cargas_aceptadas = [150, 200, 250, 300, 350, 400, 450, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 2000, 2500, 3000, 3500, 4000];
     private $limite_saldo = 6600;
     public $saldo_acumulado = 0;
+    public $tipo = "Tarjeta";
     public $saldo;
     public $usos_por_mes;
-    public $id;
+    public $id = 1;
 
     public function cargar_tarjeta($nueva_carga){
         if(in_array($nueva_carga , $this->cargas_aceptadas)){
