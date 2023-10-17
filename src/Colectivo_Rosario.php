@@ -144,7 +144,7 @@ class Colectivo_Rosario{
         $mes_ultimo_boleto = date("m Y", $tarjeta->tiempo_ultimo_boleto);
         $fecha = date("m Y", $tiempo);
         if ($mes_ultimo_boleto != $fecha) {
-            $tarjeta->usos_por_mes = 1;
+            $tarjeta->usos_por_mes = 0;
         }
     }
 
@@ -152,7 +152,7 @@ class Colectivo_Rosario{
         $dia_ultimo_boleto = date("j m Y", $tarjeta->tiempo_ultimo_boleto);
         $fecha = date("j m Y", $tiempo);
         if ($dia_ultimo_boleto != $fecha) {
-            $tarjeta->usos_por_dia = 1;
+            $tarjeta->usos_por_dia = 0;
         }
     }
 }
