@@ -28,6 +28,7 @@ class Tarjeta{
             echo "Error al cargar el monto ingresado";
             echo "Verifique que el monto ingresado este dentro de los montos aceptados";
             echo "Su saldo es de " . $this->saldo;
+            return false;
         }
     }
 
