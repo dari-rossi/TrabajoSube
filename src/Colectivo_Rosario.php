@@ -11,7 +11,6 @@ class Colectivo_Rosario{
 		
 		if($this->tipo_tarjeta == 1){//Normal
             $boleto = $this->pagar_comun($tarjeta,$tiempo);
-            $usos_por_mes = $this->comprobar_mes($tarjeta,$tiempo);
             $tarjeta->tiempo_ultimo_boleto = $tiempo;
 			return $boleto;
 		}
@@ -21,7 +20,6 @@ class Colectivo_Rosario{
 		}
 		if($this->tipo_tarjeta == 3){//BEG
             $boleto = $this->pagar_beg($tarjeta,$tiempo);
-            $this->comprobar_dia($tarjeta, $tiempo);
             $tarjeta->tiempo_ultimo_boleto = $tiempo;
 			return $boleto;
 		}
@@ -76,6 +74,7 @@ class Colectivo_Rosario{
             if($tarjeta->saldo - $this->costo_boleto >= $this->minimo_tarjeta){
                 $tarjeta->saldo -= $this->costo_boleto;
                 $tarjeta->acreditar_saldo($tarjeta->saldo);
+                $this->comprobar_mes($tarjeta,$tiempo);
                 return new Boleto($tiempo,$tarjeta->tipo,$linea,$costo_boleto,$tarjeta->saldo,$tarjeta->id);
             }
             else{
@@ -89,6 +88,7 @@ class Colectivo_Rosario{
             if($tarjeta->saldo - ($this->costo_boleto * 0.80) >= $this->minimo_tarjeta){
                 $tarjeta->saldo -= ($this->costo_boleto * 0.80);
                 $tarjeta->acreditar_saldo($tarjeta->saldo);
+                $this->comprobar_mes($tarjeta,$tiempo);
                 return new Boleto($tiempo,$tarjeta->tipo,$linea,$costo_boleto,$tarjeta->saldo,$tarjeta->id);
             }
             else{
@@ -102,6 +102,7 @@ class Colectivo_Rosario{
             if($tarjeta->saldo - ($this->costo_boleto * 0.75) >= $this->minimo_tarjeta){
                 $tarjeta->saldo -= ($this->costo_boleto * 0.75);
                 $tarjeta->acreditar_saldo($tarjeta->saldo);
+                $this->comprobar_mes($tarjeta,$tiempo);
                 return new Boleto($tiempo,$tarjeta->tipo,$linea,$costo_boleto,$tarjeta->saldo,$tarjeta->id);
             }
             else{
@@ -118,6 +119,8 @@ class Colectivo_Rosario{
 	}
     
     public function pagar_beg($tarjeta,$tiempo){
+        $this->comprobar_dia($tarjeta, $tiempo);
+        $tarjeta->tiempo_ultimo_boleto = $tiempo;
         return new Boleto($tiempo,$tarjeta->tipo,$linea,$costo_boleto,$tarjeta->saldo,$tarjeta->id);
 	}
 
@@ -158,8 +161,8 @@ class Colectivo_Rosario{
     public function comprobar_mes($tarjeta, $tiempo){
         $mes_ultimo_boleto = date("F Y", $tarjeta->tiempo_ultimo_boleto);
         $fecha = date("F Y", $tiempo);
-        if ($this->mes_ultimo_boleto != $fecha){
-            $this->mes_ultimo_boleto = $fecha;
+        if ($this->mes_ultimo_boleto != $this->fecha){
+            $this->mes_ultimo_boleto = $this->fecha;
             $this->usos_por_mes = 0;
           }
         else{
@@ -170,8 +173,8 @@ class Colectivo_Rosario{
     public function comprobar_dia($tarjeta, $tiempo){
         $dia_ultimo_boleto = date("j F Y", $tarjeta->tiempo_ultimo_boleto);
         $fecha = date("j F Y", $tiempo);
-        if ($this->dia_ultimo_boleto != $fecha){
-            $this->dia_ultimo_boleto = $fecha;
+        if ($this->dia_ultimo_boleto != $this->fecha){
+            $this->dia_ultimo_boleto = $this->fecha;
             $this->usos_por_dia = 0;
           }
         else{

@@ -18,15 +18,15 @@ class ColectivoRosarioTest extends TestCase{
 
         $tarjeta = new Tarjeta(240);
         $tarjeta->usos_por_mes = 10;
-        $colectivo->pagarCon($tarjeta,1535563577);
+        $colectivo->pagarCon($tarjeta,0);
         $this->assertEquals($tarjeta->usos_por_mes, 11);
         $this->assertEquals($tarjeta->saldo, 120);
         $tarjeta->usos_por_mes = 34;
-        $colectivo->pagarCon($tarjeta,1535563577);
+        $colectivo->pagarCon($tarjeta,0);
         $this->assertEquals($tarjeta->usos_por_mes, 35);
         $this->assertEquals($tarjeta->saldo, 24);
         $tarjeta->usos_por_mes = 81;
-        $colectivo->pagarCon($tarjeta,1535563577);
+        $colectivo->pagarCon($tarjeta,0);
         $this->assertEquals($tarjeta->usos_por_mes, 82);
         $this->assertEquals($tarjeta->saldo, -66);
 
