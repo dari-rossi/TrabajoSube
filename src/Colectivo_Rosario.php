@@ -156,10 +156,10 @@ class Colectivo_Rosario{
     }
 
     public function comprobar_mes($tarjeta, $tiempo){
-        
+        $mes_ultimo_boleto = date("F Y", $tarjeta->tiempo_ultimo_boleto);
         $fecha = date("F Y", $tiempo);
-        if ($this->mes_actual != $fecha){
-            $this->mes_actual = $fecha;
+        if ($this->mes_ultimo_boleto != $fecha){
+            $this->mes_ultimo_boleto = $fecha;
             $this->usos_por_mes = 0;
           }
         else{
@@ -168,10 +168,10 @@ class Colectivo_Rosario{
     }
 
     public function comprobar_dia($tarjeta, $tiempo){
-        
+        $dia_ultimo_boleto = date("j F Y", $tarjeta->tiempo_ultimo_boleto);
         $fecha = date("j F Y", $tiempo);
-        if ($this->dia_actual != $fecha){
-            $this->dia_actual = $fecha;
+        if ($this->dia_ultimo_boleto != $fecha){
+            $this->dia_ultimo_boleto = $fecha;
             $this->usos_por_dia = 0;
           }
         else{
