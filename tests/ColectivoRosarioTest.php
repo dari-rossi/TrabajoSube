@@ -29,6 +29,8 @@ class ColectivoRosarioTest extends TestCase{
         $colectivo->pagarCon($tarjeta,0);
         $this->assertEquals($tarjeta->usos_por_mes, 82);
         $this->assertEquals($tarjeta->saldo, -66);
+        $colectivo->pagarCon($tarjeta,0);
+        $this->assertFalse($colectivo->pagarCon($tarjeta,0));
 
         $tarjeta = new FranquiciaCompletaJubilados(120);
         $colectivo->pagarCon($tarjeta,1535563577);
