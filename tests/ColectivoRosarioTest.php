@@ -11,7 +11,7 @@ class ColectivoRosarioTest extends TestCase{
     }
 
     public function testComprobar_tarjeta(){
-        $colectivo = new ColectivoRosario();
+        $colectivo = new Colectivo_Rosario();
 
         $tarjeta = new Tarjeta(120);
         $colectivo->comprobar_tarjeta($tarjeta,1535563577);
