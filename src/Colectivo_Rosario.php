@@ -137,24 +137,24 @@ class Colectivo_Rosario{
         return $diaSemana >= 1 && $diaSemana <= 5 && $hora >= 6 && $hora < 22;
     }
 
-    public function comprobar_mes($tarjeta, $tiempo){
+    public function comprobar_mes($tarjeta, $tiempo) {
         $mes_ultimo_boleto = date("m Y", $tarjeta->tiempo_ultimo_boleto);
         $fecha = date("m Y", $tiempo);
-        if ($this->mes_ultimo_boleto == $this->fecha){
+    
+        if ($mes_ultimo_boleto == $fecha) {
             $tarjeta->usos_por_mes += 1;
-          }
-        else{
+        } else {
             $tarjeta->usos_por_mes = 1;
         }
     }
 
-    public function comprobar_dia($tarjeta, $tiempo){
+    public function comprobar_dia($tarjeta, $tiempo) {
         $dia_ultimo_boleto = date("j m Y", $tarjeta->tiempo_ultimo_boleto);
         $fecha = date("j m Y", $tiempo);
-        if ($this->dia_ultimo_boleto == $this->fecha){
+    
+        if ($dia_ultimo_boleto == $fecha) {
             $tarjeta->usos_por_dia += 1;
-          }
-        else{
+        } else {
             $tarjeta->usos_por_dia = 1;
         }
     }
