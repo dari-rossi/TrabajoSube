@@ -32,7 +32,7 @@ class Colectivo_Rosario{
         }
 	}
 
-	private function comprobar_tarjeta($tarjeta , $tiempo){
+	public function comprobar_tarjeta($tarjeta , $tiempo){
 		$tipo_tarjeta;
 
         if(horario_franquicias($tiempo)){
@@ -69,7 +69,7 @@ class Colectivo_Rosario{
 	 return $tipo_tarjeta;
 	}
 
-	private function pagar_comun($tarjeta){
+	public function pagar_comun($tarjeta){
         if($tarjeta->saldo - $this->costo_boleto >= $this->minimo_tarjeta){
             $tarjeta->saldo -= $this->costo_boleto;
             $tarjeta->acreditar_saldo($tarjeta->saldo);
@@ -82,15 +82,15 @@ class Colectivo_Rosario{
         }
 	}
 
-    private function pagar_jubilado($tarjeta){
+    public function pagar_jubilado($tarjeta){
         return new Boleto($costo_boleto,$tarjeta->saldo);
 	}
     
-    private function pagar_beg($tarjeta){
+    public function pagar_beg($tarjeta){
         return new Boleto($costo_boleto,$tarjeta->saldo);
 	}
 
-    private function pagar_parcial($tarjeta){
+    public function pagar_parcial($tarjeta){
         if($tarjeta->saldo - ($this->costo_boleto/2) >= $this->minimo_tarjeta){
             $tarjeta->saldo -= ($this->costo_boleto/2);
             $tarjeta->acreditar_saldo($tarjeta->saldo);
@@ -103,7 +103,7 @@ class Colectivo_Rosario{
         }
 	}
 
-    private function horario_franquicias($tiempo){
+    public function horario_franquicias($tiempo){
         $diaSemana = date('N', $this->tiempo);
         $hora = date('H', $this->tiempo);
         if ($diaSemana >= 1 && $diaSemana <= 5 && $hora >= 6 && $hora < 22) {

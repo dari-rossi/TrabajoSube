@@ -11,8 +11,4 @@ class TiempoFalsoTest extends TestCase{
         $tiempoFalso->avanzar(7);
         $this->assertEquals($tiempoFalso->tiempo, 7);
       }
-
-    public function testHorario_franquicias_falso(){
-      
-    }
 }
