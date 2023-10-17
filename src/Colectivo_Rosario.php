@@ -134,17 +134,17 @@ class Colectivo_Rosario{
     public function horario_franquicias($tiempo){
         $diaSemana = date('N', $tiempo);
         $hora = date('H', $tiempo);
-        return $diaSemana >= 1 && $diaSemana <= 5 && $hora >= 6 && $hora < 22;
+        return $diaSemana >= 1 && $diaSemana <= 5 && $hora >= 6 && $hora <= 22;
     }
 
     public function comprobar_mes($tarjeta, $tiempo) {
         $mes_ultimo_boleto = date("m Y", $tarjeta->tiempo_ultimo_boleto);
         $fecha = date("m Y", $tiempo);
     
-        if ($mes_ultimo_boleto == $fecha) {
-            $tarjeta->usos_por_mes += 1;
-        } else {
+        if ($mes_ultimo_boleto != $fecha) {
             $tarjeta->usos_por_mes = 1;
+        } else {
+            $tarjeta->usos_por_mes += 1;
         }
     }
 
@@ -152,10 +152,10 @@ class Colectivo_Rosario{
         $dia_ultimo_boleto = date("j m Y", $tarjeta->tiempo_ultimo_boleto);
         $fecha = date("j m Y", $tiempo);
     
-        if ($dia_ultimo_boleto == $fecha) {
-            $tarjeta->usos_por_dia += 1;
-        } else {
+        if ($dia_ultimo_boleto != $fecha) {
             $tarjeta->usos_por_dia = 1;
+        } else {
+            $tarjeta->usos_por_dia += 1;
         }
     }
 }
