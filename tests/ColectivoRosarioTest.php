@@ -44,7 +44,7 @@ class ColectivoRosarioTest extends TestCase{
         $colectivo->pagarCon($tarjeta,1535563900);
         $this->assertEquals($tarjeta->saldo, 120);
         $this->assertEquals($tarjeta->usos_por_dia, 2);
-        $colectivo->pagarCon($tarjeta,1635563577);
+        $colectivo->pagarCon($tarjeta,1625563577);
         $this->assertEquals($tarjeta->saldo, 120);
         $this->assertEquals($tarjeta->usos_por_dia, 1);
 
@@ -55,7 +55,7 @@ class ColectivoRosarioTest extends TestCase{
         $this->assertEquals($tarjeta->usos_por_dia, 3);
         $this->assertEquals($tarjeta->saldo, 60);
         $this->assertFalse($colectivo->pagarCon($tarjeta,0));
-        $colectivo->pagarCon($tarjeta,1635563577);
+        $colectivo->pagarCon($tarjeta,1625563577);
         $this->assertEquals($tarjeta->usos_por_dia, 1);
         $this->assertEquals($tarjeta->saldo, 0);
     }
