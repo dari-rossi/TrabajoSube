@@ -25,7 +25,6 @@ class Colectivo_Rosario{
 		}
 		if($this->tipo_tarjeta == 4){//Parcial
             $boleto = $this->pagar_parcial($tarjeta,$tiempo);
-            $tarjeta->usos_por_dia += 1;
 			return $boleto;
 		}
         else{
@@ -126,6 +125,7 @@ class Colectivo_Rosario{
                 $tarjeta->saldo -= ($this->costo_boleto/2);
                 $tarjeta->acreditar_saldo($tarjeta->saldo);
                 $tarjeta->ultimo_boleto = $tiempo;
+                $tarjeta->usos_por_dia += 1;
                 return new Boleto($tiempo,$tarjeta->tipo,$linea,$costo_boleto,$tarjeta->saldo,$tarjeta->id);
             }
             else{
