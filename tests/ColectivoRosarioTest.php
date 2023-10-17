@@ -15,31 +15,31 @@ class ColectivoRosarioTest extends TestCase{
 
         $tarjeta = new Tarjeta(120);
         $colectivo->comprobar_tarjeta($tarjeta,1535563577);
-        $this->assertEquals($colectivo->comprobar_tarjeta->tipo_tarjeta, 1);
+        $this->assertEquals($colectivo->tipo_tarjeta, 1);
 
         $tarjeta = new FranquiciaCompletaJubilados(120);
         $colectivo->comprobar_tarjeta($tarjeta,);
-        $this->assertEquals($colectivo->comprobar_tarjeta, 2);
+        $this->assertEquals($colectivo->tipo_tarjeta, 2);
 
         $tarjeta = new FranquiciaCompletaBEG(120);
         $tarjeta->usos_por_dia = 1;
         $colectivo->comprobar_tarjeta($tarjeta,1535563577);
-        $this->assertEquals($colectivo->comprobar_tarjeta, 3);
+        $this->assertEquals($colectivo->tipo_tarjeta, 3);
         $tarjeta->usos_por_dia = 3;
         $colectivo->comprobar_tarjeta($tarjeta,1535563577);
-        $this->assertEquals($colectivo->comprobar_tarjeta, 1);
+        $this->assertEquals($colectivo->tipo_tarjeta, 1);
 
         $tarjeta = new FranquiciaParcialMBEyU(120);
         $tarjeta->usos_por_dia = 1;
         $colectivo->comprobar_tarjeta($tarjeta,1535563577);
-        $this->assertEquals($colectivo->comprobar_tarjeta, 4);
+        $this->assertEquals($colectivo->tipo_tarjeta, 4);
         $tarjeta->usos_por_dia = 5;
         $colectivo->comprobar_tarjeta($tarjeta,1535563577);
-        $this->assertEquals($colectivo->comprobar_tarjeta, 1);
+        $this->assertEquals($colectivo->tipo_tarjeta, 1);
         
         $tarjeta = new FranquiciaCompletaJubilados(120);
         $colectivo->comprobar_tarjeta($tarjeta,0);
-        $this->assertEquals($colectivo->comprobar_tarjeta, 1);
+        $this->assertEquals($colectivo->tipo_tarjeta, 1);
 
     }
     public function testPagar_comun(){
