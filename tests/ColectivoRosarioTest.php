@@ -16,14 +16,19 @@ class ColectivoRosarioTest extends TestCase{
     public function testPagarCon(){
         $colectivo = new Colectivo_Rosario();
 
-        $tarjeta = new Tarjeta(120);
-        $tarjeta->usos_por_mes = 1;
+        $tarjeta = new Tarjeta(240);
+        $tarjeta->usos_por_mes = 10;
         $colectivo->pagarCon($tarjeta,1535563577);
-        $this->assertEquals($tarjeta->usos_por_mes, 2);
-        $this->assertEquals($tarjeta->saldo, 0);
+        $this->assertEquals($tarjeta->usos_por_mes, 11);
+        $this->assertEquals($tarjeta->saldo, 120);
+        $tarjeta->usos_por_mes = 34;
         $colectivo->pagarCon($tarjeta,1535563577);
-        $this->assertEquals($tarjeta->usos_por_mes, 3);
-        $this->assertEquals($tarjeta->saldo, -120);
+        $this->assertEquals($tarjeta->usos_por_mes, 35);
+        $this->assertEquals($tarjeta->saldo, 24);
+        $tarjeta->usos_por_mes = 81;
+        $colectivo->pagarCon($tarjeta,1535563577);
+        $this->assertEquals($tarjeta->usos_por_mes, 82);
+        $this->assertEquals($tarjeta->saldo, -66);
 
         $tarjeta = new FranquiciaCompletaJubilados(120);
         $colectivo->pagarCon($tarjeta,1535563577);
@@ -40,12 +45,15 @@ class ColectivoRosarioTest extends TestCase{
         $this->assertEquals($tarjeta->saldo, 0);
 
         $tarjeta = new FranquiciaParcialMBEyU(120);
-        $tarjeta->usos_por_dia = 3;
+        $tarjeta->usos_por_dia = 2;
         $colectivo->pagarCon($tarjeta,1535563577);
-        $this->assertEquals($tarjeta->usos_por_dia, 4);
+        $this->assertEquals($tarjeta->usos_por_dia, 3);
         $this->assertEquals($tarjeta->saldo, 60);
-        $colectivo->pagarCon($tarjeta,1535563577);
-        $this->assertEquals($tarjeta->saldo, -60);
+        $this->assertFalse($colectivo->pagarCon($tarjeta,1535563577));
+        $colectivo->pagarCon($tarjeta,1535563890);
+        $this->assertEquals($tarjeta->usos_por_dia, 4);
+        $this->assertEquals($tarjeta->saldo, 0);
+
     }
 
     public function testComprobar_tarjeta(){
