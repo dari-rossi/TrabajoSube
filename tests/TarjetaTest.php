@@ -38,10 +38,10 @@ class TarjetaTest extends TestCase{
         $mes_actual_test = date("F Y");
         
         $colectivo->pagarCon($tarjeta, $tiempo);
-        $this->assertEqual($tarjeta->usos_por_mes, 1);
+        $this->assertEquals($tarjeta->usos_por_mes, 1);
 
         $colectivo->pagarCon($tarjeta, 0);
-        $this->assertEqual($tarjeta->usos_por_mes, 0);
+        $this->assertEquals($tarjeta->usos_por_mes, 0);
     }
     
     public function test__construct(){

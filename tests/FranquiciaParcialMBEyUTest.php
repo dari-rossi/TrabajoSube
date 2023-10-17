@@ -19,10 +19,10 @@ class FranquiciaParcialMBEyUTest extends TestCase{
         $dia_actual_test = date("j F Y");
         
         $colectivo->pagarCon($tarjeta, $tiempo);
-        $this->assertEqual($tarjeta->usos_por_dia, 1);
+        $this->assertEquals($tarjeta->usos_por_dia, 1);
 
         $colectivo->pagarCon($tarjeta, 0);
-        $this->assertEqual($tarjeta->usos_por_dia, 0);
+        $this->assertEquals($tarjeta->usos_por_dia, 0);
     }
 
 }
