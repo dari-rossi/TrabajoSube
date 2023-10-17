@@ -6,7 +6,6 @@ class Tarjeta{
     public $saldo_acumulado = 0;
     public $saldo;
     public $usos_por_mes;
-    public $usos_por_dia;
     public $id;
 
     public function cargar_tarjeta($nueva_carga){
