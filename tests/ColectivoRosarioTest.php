@@ -5,14 +5,6 @@ namespace TrabajoSube;
 use PHPUnit\Framework\TestCase;
 
 class ColectivoRosarioTest extends TestCase{
-
-    public function testHorario_franquicias(){
-        $colectivo = new Colectivo_Rosario();
-
-        $this->assertTrue($colectivo->horario_franquicias(1535563577));
-        $this->assertFalse($colectivo->horario_franquicias(0));
-    }
-
     public function testPagarCon(){
         $colectivo = new Colectivo_Rosario();
 
@@ -58,7 +50,6 @@ class ColectivoRosarioTest extends TestCase{
         $this->assertEquals($tarjeta->usos_por_dia, 1);
         $this->assertEquals($tarjeta->saldo, 0);
     }
-
     public function testComprobar_tarjeta(){
         $colectivo = new Colectivo_Rosario();
 
@@ -93,7 +84,6 @@ class ColectivoRosarioTest extends TestCase{
         $this->assertEquals($colectivo->tipo_tarjeta, 1);
 
     }
-
     public function testPagar_comun(){
         $colectivo = new Colectivo_Rosario();
         
@@ -105,7 +95,6 @@ class ColectivoRosarioTest extends TestCase{
         $this->assertFalse($colectivo->pagar_comun($tarjeta,0));
 
     }
-    
     public function testPagar_jubilado(){
         $colectivo = new Colectivo_Rosario();
         
@@ -151,6 +140,10 @@ class ColectivoRosarioTest extends TestCase{
         $tarjeta->usos_por_dia = 3;
         $colectivo->comprobar_dia($tarjeta,1535563577);
         $this->assertEquals($tarjeta->usos_por_dia,0);
-        
+    }
+    public function testHorario_franquicias(){
+        $colectivo = new Colectivo_Rosario();
+        $this->assertTrue($colectivo->horario_franquicias(1535563577));
+        $this->assertFalse($colectivo->horario_franquicias(0));
     }
 }
