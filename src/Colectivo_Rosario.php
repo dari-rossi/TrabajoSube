@@ -79,6 +79,7 @@ class Colectivo_Rosario{
             echo "No tiene suficiente saldo para comprar un boleto";
             echo "Su saldo es de " . $tarjeta->saldo;
             echo "El costo del boleto es de " . $this->costo_boleto;
+            return false;
         }
 	}
 
@@ -100,6 +101,7 @@ class Colectivo_Rosario{
             echo "No tiene suficiente saldo para comprar un boleto";
             echo "Su saldo es de " . $tarjeta->saldo;
             echo "El costo del boleto es de " . ($this->costo_boleto/2);
+            return false;
         }
 	}
 
