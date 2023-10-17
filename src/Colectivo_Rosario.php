@@ -63,7 +63,7 @@ class Colectivo_Rosario{
             }
         }
         else{
-            $this->tipo_tarjeta = 1;
+            $this->tipo_tarjeta = 2;
         }
 
 	 return $tipo_tarjeta;
