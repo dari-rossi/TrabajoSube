@@ -4,7 +4,7 @@ namespace TrabajoSube;
 class TiempoFalso implements TiempoInterface {
     public $tiempo;
 
-    public function __constructor($iniciarEn = 0){
+    public function __construct($iniciarEn = 0){
         $this->tiempo = $iniciarEn;
     } 
 
