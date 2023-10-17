@@ -15,7 +15,7 @@ class ColectivoRosarioTest extends TestCase{
 
         $tarjeta = new Tarjeta(120);
         $colectivo->comprobar_tarjeta($tarjeta,1535563577);
-        $this->assertEquals($colectivo->comprobar_tarjeta, 1);
+        $this->assertEquals($colectivo->comprobar_tarjeta->tipo_tarjeta, 1);
 
         $tarjeta = new FranquiciaCompletaJubilados(120);
         $colectivo->comprobar_tarjeta($tarjeta,);
