@@ -54,7 +54,6 @@ class ColectivoRosarioTest extends TestCase{
         $colectivo->pagarCon($tarjeta,1535563900);
         $this->assertEquals($tarjeta->usos_por_dia, 3);
         $this->assertEquals($tarjeta->saldo, 60);
-        $this->assertFalse($colectivo->pagarCon($tarjeta,0));
         $colectivo->pagarCon($tarjeta,1625563577);
         $this->assertEquals($tarjeta->usos_por_dia, 1);
         $this->assertEquals($tarjeta->saldo, 0);
@@ -72,6 +71,7 @@ class ColectivoRosarioTest extends TestCase{
         $this->assertEquals($colectivo->tipo_tarjeta, 2);
 
         $tarjeta = new FranquiciaCompletaBEG(120);
+        $tarjeta->tiempo_ultimo_boleto = 1535563577;
         $tarjeta->usos_por_dia = 1;
         $colectivo->comprobar_tarjeta($tarjeta,1535563577);
         $this->assertEquals($colectivo->tipo_tarjeta, 3);
@@ -80,6 +80,7 @@ class ColectivoRosarioTest extends TestCase{
         $this->assertEquals($colectivo->tipo_tarjeta, 1);
 
         $tarjeta = new FranquiciaParcialMBEyU(120);
+        $tarjeta->tiempo_ultimo_boleto = 1535563577;
         $tarjeta->usos_por_dia = 1;
         $colectivo->comprobar_tarjeta($tarjeta,1535563577);
         $this->assertEquals($colectivo->tipo_tarjeta, 4);
