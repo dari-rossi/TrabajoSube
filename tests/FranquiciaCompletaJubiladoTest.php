@@ -4,7 +4,7 @@ namespace TrabajoSube;
 
 use PHPUnit\Framework\TestCase;
 
-class FranquiciaCompletaJubilados extends TestCase{
+class FranquiciaCompletaJubiladosTest extends TestCase{
     public function testCargar_tarjeta(){
         $tarjeta = new FranquiciaCompletaJubilados(0);
         $tarjeta->cargar_tarjeta(4000);
