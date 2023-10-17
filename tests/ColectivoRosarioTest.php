@@ -128,4 +128,32 @@ class ColectivoRosarioTest extends TestCase{
         $colectivo->pagar_parcial($tarjeta,305);
         $this->assertEquals($tarjeta->saldo,60);
     }
+    public function testComprobar_mes(){
+        $colectivo = new Colectivo_Rosario();
+    
+        $tarjeta = new Tarjeta(120);
+        $tarjeta->usos_por_mes = 7;
+        $colectivo->comprobar_mes($tarjeta,0);
+        $this->assertEquals($tarjeta->usos_por_mes,8);
+        $colectivo->comprobar_mes($tarjeta,1535563577);
+        $this->assertEquals($tarjeta->usos_por_mes,1);
+    }
+    public function testComprobar_dia(){
+        $colectivo = new Colectivo_Rosario();
+        
+        $tarjeta = new FranquiciaParcialMBEyU(120);
+        $tarjeta->usos_por_dia = 3;
+        $colectivo->comprobar_dia($tarjeta,0);
+        $this->assertEquals($tarjeta->usos_por_dia,4);
+        $colectivo->comprobar_dia($tarjeta,1535563577);
+        $this->assertEquals($tarjeta->usos_por_dia,1);
+
+        $tarjeta = new FranquiciaCompletaBEG(120);
+        $tarjeta->usos_por_dia = 3;
+        $colectivo->comprobar_dia($tarjeta,0);
+        $this->assertEquals($tarjeta->usos_por_dia,4);
+        $colectivo->comprobar_dia($tarjeta,1535563577);
+        $this->assertEquals($tarjeta->usos_por_dia,1);
+        
+    }
 }
