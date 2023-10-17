@@ -6,7 +6,7 @@ class Colectivo_Rosario{
     public $minimo_tarjeta = -211.84;
 
 	public function pagarCon($tarjeta , $tiempo){
-		$tipo_tarjeta = comprobar_tarjeta($tarjeta , $tiempo);
+		$tipo_tarjeta = $this->comprobar_tarjeta($tarjeta , $tiempo);
 		
 		if(tipo_tarjeta == 1){//Normal
             $boleto = pagar_comun($tarjeta);
