@@ -21,7 +21,7 @@ class Colectivo_Rosario{
 		}
 		if($this->tipo_tarjeta == 3){//BEG
             $boleto = $this->pagar_beg($tarjeta,$tiempo);
-            comprobar_dia($tarjeta, $tiempo);
+            $this->comprobar_dia($tarjeta, $tiempo);
             $tarjeta->tiempo_ultimo_boleto = $tiempo;
 			return $boleto;
 		}
@@ -127,7 +127,7 @@ class Colectivo_Rosario{
                 $tarjeta->saldo -= ($this->costo_boleto/2);
                 $tarjeta->acreditar_saldo($tarjeta->saldo);
                 $tarjeta->ultimo_boleto = $tiempo;
-                comprobar_dia($tarjeta, $tiempo);
+                $this->comprobar_dia($tarjeta, $tiempo);
                 $tarjeta->tiempo_ultimo_boleto = $tiempo;
                 return new Boleto($tiempo,$tarjeta->tipo,$linea,$costo_boleto,$tarjeta->saldo,$tarjeta->id);
             }
