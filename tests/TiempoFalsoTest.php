@@ -12,10 +12,9 @@ class TiempoFalsoTest extends TestCase{
       $this->assertEquals($tiempoFalso->tiempo, 7);
     }
   
-  public function test__constructor(){
+  public function test__construct(){
     $tiempoFalso = new TiempoFalso(0);
     $this->assertEquals($tiempoFalso->tiempo,0);
   }
-
 
 }

@@ -6,6 +6,13 @@ use PHPUnit\Framework\TestCase;
 
 class ColectivoRosarioTest extends TestCase{
 
+    public function testHorario_franquicias(){
+        $colectivo = new Colectivo_Rosario();
+
+        $this->assertTrue($colectivo->horario_franquicias(1535563577));
+        $this->assertFalse($colectivo->horario_franquicias(0));
+    }
+
     public function testPagarCon(){
         $colectivo = new Colectivo_Rosario();
 
@@ -114,12 +121,5 @@ class ColectivoRosarioTest extends TestCase{
         $colectivo->pagar_parcial($tarjeta,0);
         $colectivo->pagar_parcial($tarjeta,0);
         $this->assertFalse($colectivo->pagar_parcial($tarjeta,0));
-    }
-
-    public function testHorario_franquicias(){
-        $colectivo = new Colectivo_Rosario();
-
-        $this->assertTrue($colectivo->horario_franquicias(1535563577));
-        $this->assertFalse($colectivo->horario_franquicias(0));
     }
 }

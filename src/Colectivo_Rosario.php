@@ -71,18 +71,46 @@ class Colectivo_Rosario{
 	}
 
 	public function pagar_comun($tarjeta,$tiempo){
-        if($tarjeta->saldo - $this->costo_boleto >= $this->minimo_tarjeta){
-            $tarjeta->saldo -= $this->costo_boleto;
-            $tarjeta->acreditar_saldo($tarjeta->saldo);
-            return new Boleto($tiempo,$tarjeta->tipo,$linea,$costo_boleto,$tarjeta->saldo,$tarjeta->id);
-        }
-        else{
-            echo "No tiene suficiente saldo para comprar un boleto";
-            echo "Su saldo es de " . $tarjeta->saldo;
-            echo "El costo del boleto es de " . $this->costo_boleto;
-            return false;
-        }
-	}
+        if($tarjeta->usos_por_mes <= 29){
+            if($tarjeta->saldo - $this->costo_boleto >= $this->minimo_tarjeta){
+                $tarjeta->saldo -= $this->costo_boleto;
+                $tarjeta->acreditar_saldo($tarjeta->saldo);
+                return new Boleto($tiempo,$tarjeta->tipo,$linea,$costo_boleto,$tarjeta->saldo,$tarjeta->id);
+            }
+            else{
+                echo "No tiene suficiente saldo para comprar un boleto";
+                echo "Su saldo es de " . $tarjeta->saldo;
+                echo "El costo del boleto es de " . $this->costo_boleto;
+                return false;
+            }
+            if($tarjeta->usos_por_mes >= 30 && $tarjeta->usos_por_mes <= 79){
+                if($tarjeta->saldo - ($this->costo_boleto * 0.80) >= $this->minimo_tarjeta){
+                    $tarjeta->saldo -= ($this->costo_boleto * 0.80);
+                    $tarjeta->acreditar_saldo($tarjeta->saldo);
+                    return new Boleto($tiempo,$tarjeta->tipo,$linea,$costo_boleto,$tarjeta->saldo,$tarjeta->id);
+                }
+                else{
+                    echo "No tiene suficiente saldo para comprar un boleto";
+                    echo "Su saldo es de " . $tarjeta->saldo;
+                    echo "El costo del boleto es de " . $this->costo_boleto;
+                    return false;
+                }
+            }
+            else{
+                if($tarjeta->saldo - ($this->costo_boleto * 0.75) >= $this->minimo_tarjeta){
+                    $tarjeta->saldo -= ($this->costo_boleto * 0.75);
+                    $tarjeta->acreditar_saldo($tarjeta->saldo);
+                    return new Boleto($tiempo,$tarjeta->tipo,$linea,$costo_boleto,$tarjeta->saldo,$tarjeta->id);
+                }
+                else{
+                    echo "No tiene suficiente saldo para comprar un boleto";
+                    echo "Su saldo es de " . $tarjeta->saldo;
+                    echo "El costo del boleto es de " . $this->costo_boleto;
+                    return false;
+                }
+            }
+	    }
+    }
 
     public function pagar_jubilado($tarjeta,$tiempo){
         return new Boleto($tiempo,$tarjeta->tipo,$linea,$costo_boleto,$tarjeta->saldo,$tarjeta->id);
@@ -93,15 +121,22 @@ class Colectivo_Rosario{
 	}
 
     public function pagar_parcial($tarjeta,$tiempo){
-        if($tarjeta->saldo - ($this->costo_boleto/2) >= $this->minimo_tarjeta){
-            $tarjeta->saldo -= ($this->costo_boleto/2);
-            $tarjeta->acreditar_saldo($tarjeta->saldo);
-            return new Boleto($tiempo,$tarjeta->tipo,$linea,$costo_boleto,$tarjeta->saldo,$tarjeta->id);
+        if(($tiempo - $tarjeta->ultimo_boleto)>300){
+            if($tarjeta->saldo - ($this->costo_boleto/2) >= $this->minimo_tarjeta){
+                $tarjeta->saldo -= ($this->costo_boleto/2);
+                $tarjeta->acreditar_saldo($tarjeta->saldo);
+                $tarjeta->ultimo_boleto = $tiempo;
+                return new Boleto($tiempo,$tarjeta->tipo,$linea,$costo_boleto,$tarjeta->saldo,$tarjeta->id);
+            }
+            else{
+                echo "No tiene suficiente saldo para comprar un boleto";
+                echo "Su saldo es de " . $tarjeta->saldo;
+                echo "El costo del boleto es de " . ($this->costo_boleto/2);
+                return false;
+            }
         }
         else{
-            echo "No tiene suficiente saldo para comprar un boleto";
-            echo "Su saldo es de " . $tarjeta->saldo;
-            echo "El costo del boleto es de " . ($this->costo_boleto/2);
+            echo "Tienes que esperar 5 minutos desde tu ultimo boleto comprado";
             return false;
         }
 	}
