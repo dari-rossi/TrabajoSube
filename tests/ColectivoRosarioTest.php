@@ -56,27 +56,27 @@ class ColectivoRosarioTest extends TestCase{
         $colectivo = new Colectivo_Rosario();
         
         $tarjeta = new Tarjeta(120);
-        $colectivo->pagar_comun($tarjeta);
+        $colectivo->pagar_jubilado($tarjeta);
         $this->assertEquals($tarjeta->saldo,120);
-        $colectivo->pagar_comun($tarjeta);
+        $colectivo->pagar_jubilado($tarjeta);
         $this->assertEquals($tarjeta->saldo,120);
     }
     public function testPagar_beg(){
         $colectivo = new Colectivo_Rosario();
         
         $tarjeta = new Tarjeta(120);
-        $colectivo->pagar_comun($tarjeta);
+        $colectivo->pagar_beg($tarjeta);
         $this->assertEquals($tarjeta->saldo,120);
-        $colectivo->pagar_comun($tarjeta);
+        $colectivo->pagar_beg($tarjeta);
         $this->assertEquals($tarjeta->saldo,120);
     }
     public function testPagar_parcial(){
         $colectivo = new Colectivo_Rosario();
         
         $tarjeta = new Tarjeta(120);
-        $colectivo->pagar_comun($tarjeta);
+        $colectivo->pagar_parcial($tarjeta);
         $this->assertEquals($tarjeta->saldo,60);
-        $colectivo->pagar_comun($tarjeta);
+        $colectivo->pagar_parcial($tarjeta);
         $this->assertEquals($tarjeta->saldo,0);
     }
 }
