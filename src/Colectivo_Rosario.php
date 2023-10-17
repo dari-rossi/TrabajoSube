@@ -139,23 +139,22 @@ class Colectivo_Rosario{
 
     public function comprobar_mes($tarjeta, $tiempo){
         $mes_ultimo_boleto = date("m Y", $tarjeta->tiempo_ultimo_boleto);
-        $fecha = date("m Y", $tiempo);
-        if ($mes_ultimo_boleto != $fecha){
-            $tarjeta->usos_por_mes = 1;
+        if ($mes_ultimo_boleto->format('Y-m') === $tiempo->format('Y-m')){
+            $tarjeta->usos_por_mes += 1;
           }
         else{
-            $tarjeta->usos_por_mes += 1;
+            $tarjeta->usos_por_mes = 1;
         }
     }
 
     public function comprobar_dia($tarjeta, $tiempo){
         $dia_ultimo_boleto = date("j m Y", $tarjeta->tiempo_ultimo_boleto);
         $fecha = date("j m Y", $tiempo);
-        if ($dia_ultimo_boleto != $fecha){
-            $tarjeta->usos_por_dia = 1;
+        if ($dia_ultimo_boleto->format('Y-m-d') === $tiempo->format('Y-m-d')){
+            $tarjeta->usos_por_dia += 1;
           }
         else{
-            $tarjeta->usos_por_dia += 1;
+            $tarjeta->usos_por_dia = 1;
         }
     }
 }
