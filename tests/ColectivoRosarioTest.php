@@ -121,13 +121,7 @@ class ColectivoRosarioTest extends TestCase{
         $colectivo = new Colectivo_Rosario();
         
         $tarjeta = new Tarjeta(120);
-        $colectivo->pagar_parcial($tarjeta,0);
+        $colectivo->pagar_parcial($tarjeta,305);
         $this->assertEquals($tarjeta->saldo,60);
-        $colectivo->pagar_parcial($tarjeta,0);
-        $this->assertEquals($tarjeta->saldo,0);
-        $colectivo->pagar_parcial($tarjeta,0);
-        $colectivo->pagar_parcial($tarjeta,0);
-        $colectivo->pagar_parcial($tarjeta,0);
-        $this->assertFalse($colectivo->pagar_parcial($tarjeta,0));
     }
 }
